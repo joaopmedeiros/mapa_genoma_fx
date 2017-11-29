@@ -25,7 +25,7 @@
       <Label layoutX="218.0" layoutY="169.0" text="Pos. fin: " textFill="WHITE" />
       <Label fx:id="fxPosIni" layoutX="272.0" layoutY="140.0" text="--" textFill="WHITE" />
       <Label fx:id="fxPosFin" layoutX="273.0" layoutY="169.0" text="--" textFill="WHITE" />
-      <TextArea fx:id="fxBasesGeral" layoutX="217.0" layoutY="237.0" prefHeight="50.0" prefWidth="404.0" />
+      <TextArea fx:id="fxBasesGeral" layoutX="218.0" layoutY="239.0" prefHeight="50.0" prefWidth="404.0" />
       <Label layoutX="219.0" layoutY="206.0" text="Bases Geral:" textFill="WHITE" />
       <Label layoutX="58.0" layoutY="88.0" text="Lista de Genes" textFill="WHITE" />
       <Label layoutX="28.0" layoutY="27.0" text="Analise de Arquivo de Genoma" textFill="WHITE">
