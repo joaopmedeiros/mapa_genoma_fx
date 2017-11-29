@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -11,40 +12,41 @@
 
 <AnchorPane id="AnchorPane" prefHeight="670.0" prefWidth="1134.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genoma.FXMLController">
     <children>
-      <ImageView fitHeight="757.0" fitWidth="1208.0" layoutX="-2.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="757.0" fitWidth="1208.0" layoutX="-35.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@3028124-poster-p-dna.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="button" defaultButton="true" layoutX="300.0" layoutY="28.0" onAction="#handleButtonAction" text="Abrir arquivo" />
-      <Label layoutX="194.0" layoutY="113.0" text="Locus:" textFill="WHITE" />
-      <Label fx:id="fxlocus" layoutX="247.0" layoutY="113.0" text="--" textFill="WHITE" />
+      <Button fx:id="button" defaultButton="true" layoutX="300.0" layoutY="30.0" onAction="#handleButtonAction" text="Abrir arquivo" />
+      <Label layoutX="218.0" layoutY="113.0" text="Locus:" textFill="WHITE" />
+      <Label fx:id="fxlocus" layoutX="271.0" layoutY="113.0" text="--" textFill="WHITE" />
       <ListView fx:id="listview" layoutX="28.0" layoutY="113.0" onMouseClicked="#handleListAction" prefHeight="549.0" prefWidth="147.0" />
-      <Label layoutX="193.0" layoutY="140.0" text="Pos. in: " textFill="WHITE" />
-      <Label layoutX="194.0" layoutY="169.0" text="Pos. fin: " textFill="WHITE" />
-      <Label fx:id="fxPosIni" layoutX="248.0" layoutY="140.0" text="--" textFill="WHITE" />
-      <Label fx:id="fxPosFin" layoutX="249.0" layoutY="169.0" text="--" textFill="WHITE" />
-      <TextArea fx:id="fxBasesGeral" layoutX="193.0" layoutY="237.0" prefHeight="50.0" prefWidth="404.0" />
-      <Label layoutX="195.0" layoutY="206.0" text="Bases Geral:" textFill="WHITE" />
+      <Label layoutX="217.0" layoutY="140.0" text="Pos. in: " textFill="WHITE" />
+      <Label layoutX="218.0" layoutY="169.0" text="Pos. fin: " textFill="WHITE" />
+      <Label fx:id="fxPosIni" layoutX="272.0" layoutY="140.0" text="--" textFill="WHITE" />
+      <Label fx:id="fxPosFin" layoutX="273.0" layoutY="169.0" text="--" textFill="WHITE" />
+      <TextArea fx:id="fxBasesGeral" layoutX="217.0" layoutY="237.0" prefHeight="50.0" prefWidth="404.0" />
+      <Label layoutX="219.0" layoutY="206.0" text="Bases Geral:" textFill="WHITE" />
       <Label layoutX="58.0" layoutY="88.0" text="Lista de Genes" textFill="WHITE" />
       <Label layoutX="28.0" layoutY="27.0" text="Analise de Arquivo de Genoma" textFill="WHITE">
          <font>
-            <Font size="17.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <TextArea fx:id="fxLeitura531" layoutX="193.0" layoutY="338.0" prefHeight="50.0" prefWidth="404.0" />
-      <TextArea fx:id="fxLeitura532" layoutX="193.0" layoutY="432.0" prefHeight="50.0" prefWidth="404.0" />
-      <TextArea fx:id="fxLeitura533" layoutX="193.0" layoutY="528.0" prefHeight="50.0" prefWidth="404.0" />
-      <TextArea fx:id="fxLeitura351" layoutX="645.0" layoutY="338.0" prefHeight="50.0" prefWidth="404.0" />
-      <TextArea fx:id="fxLeitura352" layoutX="645.0" layoutY="432.0" prefHeight="50.0" prefWidth="404.0" />
-      <TextArea fx:id="fxLeitura353" layoutX="638.0" layoutY="528.0" prefHeight="50.0" prefWidth="404.0" />
-      <TextArea fx:id="fxAminoCorreto" layoutX="426.0" layoutY="611.0" prefHeight="50.0" prefWidth="404.0" />
-      <Label layoutX="195.0" layoutY="310.0" text="Leitura 531" textFill="WHITE" />
-      <Label layoutX="195.0" layoutY="405.0" text="Leitura 532" textFill="WHITE" />
-      <Label layoutX="195.0" layoutY="501.0" text="Leitura 533" textFill="WHITE" />
-      <Label layoutX="649.0" layoutY="305.0" text="Leitura 351" textFill="WHITE" />
-      <Label layoutX="645.0" layoutY="405.0" text="Leitura 352" textFill="WHITE" />
-      <Label layoutX="638.0" layoutY="501.0" text="Leitura 353" textFill="WHITE" />
-      <Label layoutX="544.0" layoutY="589.0" text="Sequencia de aminoacido correta" textFill="WHITE" />        
+      <TextArea fx:id="fxLeitura531" layoutX="217.0" layoutY="336.0" prefHeight="50.0" prefWidth="440.0" />
+      <TextArea fx:id="fxLeitura532" layoutX="217.0" layoutY="430.0" prefHeight="50.0" prefWidth="440.0" />
+      <TextArea fx:id="fxLeitura533" layoutX="217.0" layoutY="523.0" prefHeight="50.0" prefWidth="440.0" />
+      <TextArea fx:id="fxLeitura351" layoutX="709.0" layoutY="336.0" prefHeight="50.0" prefWidth="440.0" />
+      <TextArea fx:id="fxLeitura352" layoutX="709.0" layoutY="425.0" prefHeight="50.0" prefWidth="440.0" />
+      <TextArea fx:id="fxLeitura353" layoutX="709.0" layoutY="516.0" prefHeight="50.0" prefWidth="440.0" />
+      <TextArea fx:id="fxAminoCorreto" layoutX="217.0" layoutY="611.0" prefHeight="50.0" prefWidth="933.0" />
+      <Label layoutX="217.0" layoutY="308.0" text="Leitura 531" textFill="WHITE" />
+      <Label layoutX="217.0" layoutY="403.0" text="Leitura 532" textFill="WHITE" />
+      <Label layoutX="217.0" layoutY="496.0" text="Leitura 533" textFill="WHITE" />
+      <Label layoutX="710.0" layoutY="304.0" text="Leitura 351" textFill="WHITE" />
+      <Label layoutX="709.0" layoutY="398.0" text="Leitura 352" textFill="WHITE" />
+      <Label layoutX="709.0" layoutY="489.0" text="Leitura 353" textFill="WHITE" />
+      <Label layoutX="568.0" layoutY="585.0" text="Sequencia de aminoacido correta" textFill="WHITE" />
+      <Canvas fx:id="fxCanvas" height="272.0" layoutX="709.0" layoutY="19.0" width="440.0" />        
     </children>
 </AnchorPane>

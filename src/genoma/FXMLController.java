@@ -14,10 +14,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -58,6 +61,9 @@ public class FXMLController implements Initializable {
     private TextArea fxLeitura353;
     @FXML
     private TextArea fxAminoCorreto;
+    @FXML
+    private Canvas fxCanvas;
+    private GraphicsContext gc;
     
     @FXML
     private void handleButtonAction(ActionEvent event) {        
@@ -84,7 +90,9 @@ public class FXMLController implements Initializable {
     private void handleListAction(MouseEvent event){        
         String locus_selecionado = listview.getSelectionModel().getSelectedItem().toString();
         Gene geneSel = locus_gene.get(locus_selecionado);
-        geneSel.completaGene();
+        if (geneSel.getBasesAgrupadas().size()==0){
+            geneSel.completaGene();
+        }        
         fxlocus.setText(locus_selecionado);
         fxPosFin.setText(Long.toString(geneSel.getPos_final()));
         fxPosIni.setText(Long.toString(geneSel.getPos_ini()));
@@ -95,9 +103,55 @@ public class FXMLController implements Initializable {
         fxLeitura351.setText(geneSel.getBasesAgrupadas().get(3).toString());   
         fxLeitura352.setText(geneSel.getBasesAgrupadas().get(4).toString());
         fxLeitura353.setText(geneSel.getBasesAgrupadas().get(5).toString());
-        fxAminoCorreto.setText(geneSel.getBaseCorreta().toString());
-        geneSel.getaminoAcidosAgrupados().forEach(base -> System.out.println(base.toString()));       
+        fxAminoCorreto.setText(geneSel.getBaseCorreta().toString());        
+	gc = fxCanvas.getGraphicsContext2D();
+        gc.clearRect(0, 0, 0, 0);
+	// grid.add(canvas, 0, 0);
+	drawSequence(geneSel.getBasesGeral());
     }
+    
+    private Color getNucleotideColor(Character n) {
+		switch (n) {
+		case 'A':
+			return Color.BLUE;
+		case 'C':
+			return Color.YELLOW;
+		case 'T':
+			return Color.GREEN;
+		case 'G':
+			return Color.RED;
+		default:
+			return Color.BLACK;
+		}
+	}
+    
+    	private void drawSequence(List<Character> nucl) {
+		gc.setStroke(Color.TRANSPARENT);
+                gc.setLineWidth(5);
+		gc.strokeRect(0, 0, fxCanvas.getWidth(), fxCanvas.getHeight());
+		if (nucl == null) {
+			return;
+		}
+
+		int cx = (int) fxCanvas.getWidth() / 2;
+		int cy = (int) fxCanvas.getHeight() / 2;
+		int raioInterno = 40;
+		int raioExterno = 125;
+		gc.setLineWidth(2);
+		int i = 0;
+		// System.out.println("Size:"+nucl.size());
+		for (double ang = 0; ang < Math.PI * 2; ang += (Math.PI * 2) / nucl.size(), i++) {
+			// System.out.println(i);
+			if (i < nucl.size()) {
+				double x1 = raioInterno * Math.cos(ang);
+				double y1 = raioInterno * Math.sin(ang);
+				double x2 = raioExterno * Math.cos(ang);
+				double y2 = raioExterno * Math.sin(ang);
+				gc.setStroke(getNucleotideColor(nucl.get(i)));
+				gc.strokeLine((int) (cx + x1), (int) (cy + y1), (int) (cx + x2), (int) (cy + y2));
+			}
+		}
+	}
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
